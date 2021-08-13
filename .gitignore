@@ -1,0 +1,13 @@
+/.idea
+/.sass-cache
+/.vscode
+/node_modules
+/.uglify
+/dist
+/.zip
+/.history
+.DS_Store
+/.DS_Store
+*.DS_Store
+*.log
+yarn.lock
