@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const config = require('./config/config');
+
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -54,6 +55,15 @@ module.exports = {
                     },
                     'postcss-loader'
                 ]
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                    }
+                }
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,

@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const commonWebpackConfig = require('./webpack.common')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -5,14 +6,17 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = merge(commonWebpackConfig, {
     mode: 'development',
+    target: 'web',
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist',
         publicPath: '/',
         port: '9600',
+        compress: true,
+        hot: true,
     },
     plugins: [
-        new BundleAnalyzerPlugin()
+        // new BundleAnalyzerPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ]
 })
 

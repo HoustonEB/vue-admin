@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+console.log('router2')
 const Home = () => import('@/views/home/Home')  // 首页
 
 Vue.use(Router)

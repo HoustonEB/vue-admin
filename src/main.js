@@ -12,9 +12,10 @@ import router from './router'
 // import './assets/css/public.css'
 
 new Vue({
-  el: '#app',
-  router,
-//   store,
-  components: { App },
-  template: '<App/>'
+    el: '#app',
+    router,
+    //   store,
+    components: { App },
+    template: '<App/>'
 })
+
