@@ -7,5 +7,6 @@ var config = {
 config.path.src = path.resolve(config.root + '/src/')
 config.path.public = path.resolve(config.root + '/public/')
 config.path.dist = path.resolve(config.root + '/dist/')
+config.path.static = path.resolve(config.root + '/static/')
 
 module.exports = config

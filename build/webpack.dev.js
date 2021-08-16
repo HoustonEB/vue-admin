@@ -15,6 +15,9 @@ module.exports = merge(commonWebpackConfig, {
         hot: true,
     },
     plugins: [
+        new webpack.DefinePlugin({
+            env: JSON.stringify('devlopment'),
+        }),
         // new BundleAnalyzerPlugin()
         new webpack.HotModuleReplacementPlugin()
     ]

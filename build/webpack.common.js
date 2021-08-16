@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const config = require('./config/config');
 
 function resolve(dir) {
@@ -11,7 +12,7 @@ module.exports = {
     entry: './src/main.js',
     output: {
         publicPath: '/',
-        filename: '[name].bundle.[contenthash].js',
+        filename: 'js/[name].bundle.[contenthash].js',
         path: config.path.dist,
         clean: true,
     },
@@ -24,6 +25,7 @@ module.exports = {
              * **/
             vue: 'vue/dist/vue.js',
             '@': resolve('src'),
+            '@static': config.path.static,
         }
     },
     module: {
@@ -36,6 +38,12 @@ module.exports = {
                 test: /\.(sass|scss)$/,
                 use: [
                     'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: false,
+                        },
+                    },
                     {
                         loader: 'css-loader',
                         // options: {
@@ -68,10 +76,16 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
+                generator: {
+                    filename: 'imgs/[name].[hash][ext]'
+                }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name].[hash][ext]'
+                }
             },
         ],
     },
@@ -100,6 +114,9 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].[hash].css',
+        }),
         new HtmlWebpackPlugin({
             title: 'vue admin',
             inject: 'body',
