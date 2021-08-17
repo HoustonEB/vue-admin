@@ -1,13 +1,22 @@
 <template>
     <div class="admin-page-wrapper">
-        <router-view></router-view>
+        <Layout>
+            <router-view></router-view>
+        </Layout>
     </div>
 </template>
-<style lang="scss-loader">
-
+<style lang="scss">
+.admin-page-wrapper {
+    width: 100%;
+    height: 100%;
+}
 </style>
 <script>
+import Layout from '@/components/Layout/Layout';
 export default {
+    components: {
+        Layout,
+    },
     data() {
         return {
         }

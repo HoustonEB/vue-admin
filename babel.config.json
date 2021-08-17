@@ -3,14 +3,21 @@
         [
             "@babel/preset-env",
             {
+                "modules": false,
                 "useBuiltIns": "entry",
-                "corejs": {
-                    "version": "3.16"
-                }
+                "corejs": 2
             }
         ]
     ],
     "plugins": [
+        // [ // babel-plugin-component暂不兼容babel8
+        //     "component",
+        //     {
+        //         "libraryName": "element-ui",
+        //         "styleLibraryName": "theme-chalk"
+        //     },
+        //     "element-ui"
+        // ]
         [
             "import",
             {
@@ -18,12 +25,5 @@
                 "libraryDirectory": "src/components"
             }
         ]
-        // [
-        //     "component",
-        //     {
-        //         "libraryName": "element-ui",
-        //         "styleLibraryName": "theme-chalk"
-        //     }
-        // ]
     ]
 }

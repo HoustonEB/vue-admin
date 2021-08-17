@@ -1,8 +1,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ElementUI from 'element-ui'
-import { Button, Table } from 'iview'
+// import {
+//     scrollbar,
+//     Menu,
+//     Submenu,
+//     MenuItem,
+//     MenuItemGroup,
+// } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import ElementUi from 'element-ui'
+// import { Button, Table } from 'iview'
+import '@@/public/css/common.scss'
 // import store from './store'
 
 
@@ -11,10 +20,16 @@ import { Button, Table } from 'iview'
 //     require('@/service/mock/index');
 // }
 
-// import './assets/css/public.css'
-Vue.use(ElementUI);
-Vue.use(Button);
-Vue.use(Table);
+
+Vue.use(ElementUi);
+// Vue.use(scrollbar);
+// Vue.use(Menu);
+// Vue.use(Submenu);
+// Vue.use(MenuItem);
+// Vue.use(MenuItemGroup);
+
+// Vue.use(Button);
+// Vue.use(Table);
 
 new Vue({
     el: '#app',

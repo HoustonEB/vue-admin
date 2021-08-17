@@ -1,0 +1,23 @@
+.admin-layout-wrapper {
+    $layout-bgc: rgb(84, 92, 100);
+    width: 100%;
+    height: 100%;
+    .admin-header-wrapper {
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        line-height: 60px;
+        background-color: $layout-bgc;
+        z-index: 100;
+    }
+    .admin-sidebar-wrapper {
+        position: fixed;
+        left: 0;
+        width: 240px;
+        height: 100%;
+        padding-top: 60px;
+        background-color: $layout-bgc;
+    }
+}

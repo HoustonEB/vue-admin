@@ -1,5 +1,5 @@
 <template src="./Layout.html"></template>
-<style lang="sass-loader" src="./Layout.style.scss"></style>
+<style lang="scss" src="./Layout.style.scss"></style>
 <script>
 export default {
     data() {

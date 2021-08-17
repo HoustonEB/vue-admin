@@ -1,21 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const config = require('./config/config');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-function resolve(dir) {
-    return path.join(__dirname, '..', dir)
-}
+const isProd = process.env.NODE_ENV === 'production' ? true : false;
 
 module.exports = {
     entry: './src/main.js',
-    output: {
-        publicPath: '/',
-        filename: 'js/[name].bundle.[contenthash].js',
-        path: config.path.dist,
-        clean: true,
-    },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
@@ -24,8 +16,8 @@ module.exports = {
              * To override this default, add this to your webpack.config.js:
              * **/
             vue: 'vue/dist/vue.js',
-            '@': resolve('src'),
-            '@static': config.path.static,
+            '@': config.path.src,
+            '@@': config.path.root,
         }
     },
     module: {
@@ -35,14 +27,14 @@ module.exports = {
                 loader: 'vue-loader'
             },
             {
-                test: /\.(sass|scss)$/,
+                test: /\.(sass|scss|css)$/,
                 use: [
-                    'style-loader',
+                    // 'style-loader',
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             esModule: false,
-                        },
+                        }
                     },
                     {
                         loader: 'css-loader',
@@ -50,6 +42,7 @@ module.exports = {
                         //     importLoaders: 2
                         // }
                     },
+                    'postcss-loader',
                     {
                         loader: 'sass-loader',
                         options: {
@@ -60,8 +53,7 @@ module.exports = {
                             // 全局sass变量
                             additionalData: `$color: red;`
                         }
-                    },
-                    'postcss-loader'
+                    }
                 ]
             },
             {
@@ -77,14 +69,14 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'imgs/[name].[hash][ext]'
+                    filename: 'imgs/[name].[hash:7][ext]'
                 }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'fonts/[name].[hash][ext]'
+                    filename: 'fonts/[name].[hash:7][ext]'
                 }
             },
         ],
@@ -99,12 +91,12 @@ module.exports = {
             maxInitialRequests: 30,
             enforceSizeThreshold: 50000,
             cacheGroups: {
-                defaultVendors: {
+                vendor: {
                     test: /[\\/]node_modules[\\/]/,
                     priority: -10,
                     reuseExistingChunk: true,
                 },
-                default: {
+                common: {
                     minChunks: 2,
                     priority: -20,
                     reuseExistingChunk: true,
@@ -114,9 +106,6 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[hash].css',
-        }),
         new HtmlWebpackPlugin({
             title: 'vue admin',
             inject: 'body',
