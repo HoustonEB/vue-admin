@@ -8,7 +8,7 @@ Vue.use(Router)
 export default new Router({
     routes: [
         { path: '/', redirect: '/home' },
-        { path: '/home', name: 'HOME', component: Home },
+        { path: 'home', name: 'HOME', component: Home },
     ],
     scrollBehavior(to, from, savedPosition) {
         return { x: 0, y: 0 }

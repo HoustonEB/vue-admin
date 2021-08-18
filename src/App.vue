@@ -12,6 +12,9 @@
 }
 </style>
 <script>
+import {
+    getUserInfo
+} from '@/service/common';
 import Layout from '@/components/Layout/Layout';
 export default {
     components: {
@@ -22,6 +25,7 @@ export default {
         }
     },
     mounted() {
+        getUserInfo();
     },
     watch: {
     },

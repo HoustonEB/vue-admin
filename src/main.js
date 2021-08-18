@@ -8,11 +8,12 @@ import router from './router'
 //     MenuItem,
 //     MenuItemGroup,
 // } from 'element-ui'
+import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import ElementUi from 'element-ui'
 // import { Button, Table } from 'iview'
 import '@@/public/css/common.scss'
-// import store from './store'
+import store from './store'
 
 
 
@@ -34,7 +35,7 @@ Vue.use(ElementUi);
 new Vue({
     el: '#app',
     router,
-    //   store,
+    store,
     components: { App },
     template: '<App/>'
 })

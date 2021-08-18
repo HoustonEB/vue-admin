@@ -14,10 +14,15 @@
     }
     .admin-sidebar-wrapper {
         position: fixed;
+        top: 0;
         left: 0;
+        bottom: 0;
         width: 240px;
-        height: 100%;
+        height: calc(100% + 15px);
         padding-top: 60px;
         background-color: $layout-bgc;
+        .el-menu {
+            border-right: none;
+        }
     }
 }
